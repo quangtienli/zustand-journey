@@ -3,6 +3,8 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import BearCounter from './components/BearCounter';
+import FishCounter from './components/FishCounter';
+import PandaCounter from './components/PandaCounter';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,6 +20,8 @@ function App() {
         </a>
       </div>
       <BearCounter />
+      <FishCounter />
+      <PandaCounter />
     </>
   );
 }

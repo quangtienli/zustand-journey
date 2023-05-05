@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import useStore, { Bear } from '../store';
+import useStore from '../store';
+import { Bear } from '../types';
 
 interface IBear {
   bear: Bear;

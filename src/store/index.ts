@@ -1,46 +1,19 @@
-import { create } from 'zustand';
+import { create, StoreApi } from 'zustand';
+import { createPandaSlice, PandaSlice } from './panda-slice';
+import { createFishSlice, FishSlice } from './fish-slice';
+import { BearSlice, createBearSlice } from './bear-slice';
 
-export interface Bear {
-  name: string;
-  age: number;
-  dateOfBirth: Date;
-  origin: string;
-}
+export type StoreState = BearSlice & PandaSlice & FishSlice;
 
-interface BearState {
-  bears: Bear[];
-}
+export type StoreSlice<T> = (
+  set: StoreApi<StoreState>['setState'],
+  get: StoreApi<StoreState>['getState']
+) => T;
 
-interface BearAction {
-  insert: (bear: Bear) => void;
-  increaseAge: (name: Bear['name']) => void;
-  decreaseAge: (name: Bear['name']) => void;
-}
-
-const useStore = create<BearState & BearAction>((set) => ({
-  bears: [
-    {
-      name: 'Koala',
-      age: 2,
-      dateOfBirth: new Date(2022, 8, 17),
-      origin: 'China',
-    },
-  ],
-  insert: (bear: Bear) => set((state) => ({ bears: [...state.bears, bear] })),
-  increaseAge: (name: Bear['name']) =>
-    set((state) => {
-      return {
-        bears: state.bears.map((bear) =>
-          bear.name !== name ? bear : { ...bear, age: bear.age + 1 }
-        ),
-      };
-    }),
-  decreaseAge: (name: Bear['name']) =>
-    set((state) => ({
-      bears: state.bears.map((bear) =>
-        bear.name !== name ? bear : { ...bear, age: bear.age - 1 }
-      ),
-    })),
+const useStore = create<StoreState>((set, get) => ({
+  ...createBearSlice(set, get),
+  ...createPandaSlice(set, get),
+  ...createFishSlice(set, get),
 }));
 
 export default useStore;
