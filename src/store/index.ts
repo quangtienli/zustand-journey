@@ -1,10 +1,9 @@
 import { create, StoreApi } from 'zustand';
 import { persist, devtools } from 'zustand/middleware';
-import { createPandaSlice, PandaSlice } from './panda-slice';
-import { createFishSlice, FishSlice } from './fish-slice';
-import { BearSlice, createBearSlice } from './bear-slice';
+import createFirestoreSlice, { FirestoreSlice } from './firestore-slice';
+import createUserSlice, { UserSlice } from './user-slice';
 
-export type StoreState = BearSlice & PandaSlice & FishSlice;
+export type StoreState = FirestoreSlice & UserSlice;
 
 export type StoreSlice<T> = (
   set: StoreApi<StoreState>['setState'],
@@ -12,20 +11,17 @@ export type StoreSlice<T> = (
 ) => T;
 
 const applyMiddlewares = (f: StoreSlice<StoreState>) =>
-devtools(
+  devtools(
     persist(f, {
       name: 'store',
-      partialize: (state: StoreState) => ({
-        bears: state.bears,
-      }),
+      version: 0,
     })
-)
+  );
 
 const useStore = create<StoreState>()(
   applyMiddlewares((set, get) => ({
-    ...createBearSlice(set, get),
-    ...createPandaSlice(set, get),
-    ...createFishSlice(set, get),
+    ...createUserSlice(set, get),
+    ...createFirestoreSlice(set, get),
   }))
 );
 
