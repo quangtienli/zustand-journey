@@ -1,11 +1,12 @@
 import './App.css';
-import Todos from './components/Todos/Todos';
+
+const APP_KEY = import.meta.env.VITE_KEY;
 
 function App() {
   return (
-    <>
-      <Todos />
-    </>
+    <div>
+      <p>{`App key: ${APP_KEY}`}</p>
+    </div>
   );
 }
 
