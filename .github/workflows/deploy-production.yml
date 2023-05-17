@@ -26,6 +26,6 @@ jobs:
         run: |
           export GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json
           firebase experiments:enable webframeworks
-          firebase deploy --json
+          firebase deploy
         env:
-          VITE_KEY: "production-key"
+          VITE_KEY: 'production-key'
