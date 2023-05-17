@@ -27,7 +27,7 @@ jobs:
       - name: Enable web framework
         run: firebase experiments:enable webframeworks
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting
+        run: firebase deploy --json
         env:
           VITE_KEY: "development-key"
       # run: npm ci && npm run build
