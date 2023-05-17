@@ -6,7 +6,7 @@ export interface FirestoreSlice {
   setSyncStatus: (syncStatus: SyncStatus) => void;
 }
 
-const createFirestoreSlice: StoreSlice<FirestoreSlice> = (set, get) => ({
+const createFirestoreSlice: StoreSlice<FirestoreSlice> = (set) => ({
   syncStatus: 'synced',
   setSyncStatus: (syncStatus: SyncStatus) => set(() => ({ syncStatus })),
 });
