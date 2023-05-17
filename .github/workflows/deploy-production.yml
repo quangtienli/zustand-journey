@@ -16,6 +16,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'npm'
       - name: Install dependencies
         run: npm install
       - name: Install Firebase CLI
@@ -28,4 +29,4 @@ jobs:
           firebase experiments:enable webframeworks
           firebase deploy
         env:
-          VITE_KEY: 'production-key'
+          VITE_KEY: production-key
