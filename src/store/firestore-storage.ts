@@ -1,14 +1,14 @@
-import { PersistStorage, StorageValue } from 'zustand/middleware';
+import { PersistStorage } from 'zustand/middleware';
 
 const createFirestoreStorage = <S>(): PersistStorage<S> | undefined => {
   const persistStorage: PersistStorage<S> = {
-    getItem: async (name: string) => {
+    getItem: async () => {
       return null;
     },
-    setItem: async (name: string, value: StorageValue<S>) => {
+    setItem: async () => {
       return;
     },
-    removeItem: async (name: string) => {
+    removeItem: async () => {
       return;
     },
   };

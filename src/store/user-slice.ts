@@ -17,7 +17,7 @@ export interface UserSlice {
   completeTodo: (key: string) => void;
 }
 
-const createUserSlice: StoreSlice<UserSlice> = (set, get) => ({
+const createUserSlice: StoreSlice<UserSlice> = (set) => ({
   todos: [],
   setTodos: (todos: Todo[]) => set(() => ({ todos })),
   addTodo: (todo: Todo) => set((state) => ({ todos: [...state.todos, todo] })),
