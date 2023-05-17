@@ -29,10 +29,4 @@ jobs:
       - name: Deploy to Firebase Hosting
         run: firebase deploy --json
         env:
-          VITE_KEY: "development-key"
-      # run: npm ci && npm run build
-      # - uses: FirebaseExtended/action-hosting-deploy@v0
-      #   with:
-      #     repoToken: '${{ secrets.GITHUB_TOKEN }}'
-      #     firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_FMGCL_TESTING }}'
-      #     projectId: fmgcl-testing
+          VITE_KEY: "production-key"
