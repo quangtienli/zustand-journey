@@ -17,9 +17,9 @@ jobs:
         with:
           node-version: 18
       - name: Install dependencies
-        run: npm install
+        run: yarn
       - name: Install Firebase CLI
-        run: npm install -g firebase-tools
+        run: yarn global add firebase-tools
       - name: Create Service Account key
         run: echo '${{ secrets.STAGE_GCP_KEY }}' > $HOME/gcloud.json
       - name: Deploy Firebase
